@@ -17,7 +17,18 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+    // Google Guava
+    implementation 'com.google.guava:guava:33.1.0-jre'
+
+    // AssertJ
+    testImplementation 'org.assertj:assertj-core:3.25.1'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.32' // Простая реализация SLF4J для вывода логов в консоль
+
 }
+
 
 test {
     useJUnitPlatform()

@@ -2,7 +2,7 @@ package lab;
 
 public class Processor implements Runnable {
 
-    public static final long TICK_TIME = 1000L;
+    public static final long TICK_TIME = 100L;
     private int tickCounter = 0;
 
     @Override
