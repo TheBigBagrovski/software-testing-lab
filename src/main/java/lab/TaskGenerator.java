@@ -1,4 +1,7 @@
-package lab.task;
+package lab;
+
+import lab.task.PriorityLevel;
+import lab.task.Task;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,12 +13,12 @@ public class TaskGenerator {
     private TaskGenerator() {}
 
     public static Task generateRandomTask() {
-        int ticks = random.nextInt(5,100);
+        int ticks = random.nextInt(5,10);
         PriorityLevel[] priorities = PriorityLevel.values();
         PriorityLevel priority = priorities[random.nextInt(priorities.length)];
 
         return Task.builder()
-                .ticks(ticks)
+                .ticksToComplete(ticks)
                 .priority(priority)
                 .build();
     }

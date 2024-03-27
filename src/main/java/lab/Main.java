@@ -1,7 +1,5 @@
 package lab;
 
-import lab.task.TaskGenerator;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,7 +12,7 @@ public class Main {
 
         while (true) {
             dispatcher.addTask(TaskGenerator.generateRandomTask());
-            Thread.sleep(1100L);
+            Thread.sleep(3000L);
         }
     }
 

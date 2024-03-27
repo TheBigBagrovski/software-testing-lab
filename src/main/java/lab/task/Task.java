@@ -15,13 +15,13 @@ import java.util.concurrent.Callable;
 public class Task implements Callable<Task>, Comparable<Task> {
 
     private State currentState;
-    private Integer ticks;
+    private Integer ticksToComplete;
     private final PriorityLevel priority;
     private final String uuid = UUID.randomUUID().toString();
 
     @Override
     public int compareTo(Task o) {
-        return 0;
+        return o.priority.ordinal() - this.priority.ordinal();
     }
 
     @Override
@@ -33,8 +33,8 @@ public class Task implements Callable<Task>, Comparable<Task> {
     public String toString() {
         return "Task{" +
                 "priority=" + priority +
-                ", ticks=" + ticks +
-                ", uuid='" + uuid + '\'' +
+                ", ticks=" + ticksToComplete +
+//                ", uuid='" + uuid + '\'' +
                 '}';
     }
 }
