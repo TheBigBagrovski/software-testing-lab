@@ -11,15 +11,15 @@ public enum State {
     RUNNING,
     SUSPENDED,
     READY,
-    WAITING;
+    WAITING
 
-    static {
-        RUNNING.nextPossibleStates = EnumSet.of(READY, SUSPENDED, WAITING);
-        SUSPENDED.nextPossibleStates = EnumSet.of(READY);
-        READY.nextPossibleStates = EnumSet.of(RUNNING);
-        WAITING.nextPossibleStates = EnumSet.of(READY);
-    }
-
-    private Set<State> nextPossibleStates;
+//    static {
+//        RUNNING.nextPossibleStates = EnumSet.of(READY, SUSPENDED, WAITING);
+//        SUSPENDED.nextPossibleStates = EnumSet.of(READY);
+//        READY.nextPossibleStates = EnumSet.of(RUNNING);
+//        WAITING.nextPossibleStates = EnumSet.of(READY);
+//    }
+//
+//    private Set<State> nextPossibleStates;
 
 }
