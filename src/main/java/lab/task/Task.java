@@ -16,7 +16,7 @@ import java.util.concurrent.Callable;
 @Builder
 public class Task implements Comparable<Task> {
 
-    private State currentState = State.SUSPENDED;
+    private State currentState;
     private Integer ticksToComplete;
     private final PriorityLevel priority;
     private final String uuid = UUID.randomUUID().toString();
@@ -29,26 +29,30 @@ public class Task implements Comparable<Task> {
     @Override
     public String toString() {
         return "Task{" +
-                "priority=" + priority +
-                ", ticks=" + ticksToComplete +
+                "приоритет=" + priority +
+                ", тактов=" + ticksToComplete +
 //                ", uuid='" + uuid + '\'' +
                 '}';
     }
 
     public void preempt(){
-        currentState = State.READY;
+        if (currentState == State.RUNNING) currentState = State.READY;
+        else System.err.println("WRONG TRANSITION");
     }
 
     public void start(){
-        currentState = State.RUNNING;
+        if (currentState == State.READY) currentState = State.RUNNING;
+        else System.err.println("WRONG TRANSITION");
     }
 
     public void terminate(){
-        currentState = State.SUSPENDED;
+        if (currentState == State.RUNNING) currentState = State.SUSPENDED;
+        else System.err.println("WRONG TRANSITION");
     }
 
     public void activate(){
-        currentState = State.READY;
+        if (currentState == State.SUSPENDED) currentState = State.READY;
+        else System.err.println("WRONG TRANSITION");
     }
 
 
