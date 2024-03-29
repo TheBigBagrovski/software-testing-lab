@@ -2,18 +2,23 @@
 //
 //public class Processor implements Runnable {
 //
-//    public static final long TICK_TIME = 100L;
+//    public static final long TICK_TIME = 1000L;
 //    private int tickCounter = 0;
+//    private final Object lock = new Object();
 //
 //    @Override
 //    public void run() {
-//        while(true) {
-//            try {
-//                Thread.sleep(TICK_TIME);
+//        synchronized (lock) {
+//            while (true) {
+//                // Выполняем действия на каждом такте
 //                tickCounter++;
-//                System.out.println("tick #" + tickCounter);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
+//                System.out.println("Tick " + tickCounter);
+//                try {
+//                    Thread.sleep(1000); // Подождать 1 секунду между тактами
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                lock.notify(); // Уведомляем поток, который ждет такты
 //            }
 //        }
 //    }
