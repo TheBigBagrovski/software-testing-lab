@@ -33,16 +33,16 @@ public class CustomQueue extends PriorityBlockingQueue<Task> {
         }
     }
 
-    @Override
-    public Task take() throws InterruptedException {
-        Task t;
-        try {
-            t = super.take();
-        } catch (InterruptedException e) {
-            return null;
-        }
-        return t;
-    }
+//    @Override
+//    public Task take() throws InterruptedException {
+//        Task t;
+//        try {
+//            t = super.take();
+//        } catch (InterruptedException e) {
+//            return null;
+//        }
+//        return t;
+//    }
 
     @Override
     public int remainingCapacity() {

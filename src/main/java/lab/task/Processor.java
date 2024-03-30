@@ -41,10 +41,10 @@ public class Processor implements Runnable {
             System.out.println("--------------------------------------------------");
             System.out.println("такт #" + tickCounter);
             synchronized (tickCompleteLock) {
-                tickCompleteLock.notifyAll(); // Сигнализируем о завершении операции
+                tickCompleteLock.notifyAll(); // Сигнализируем о завершении такта
             }
             try {
-                Thread.sleep(100); // Скорость процессора
+                Thread.sleep(1000); // Скорость процессора
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

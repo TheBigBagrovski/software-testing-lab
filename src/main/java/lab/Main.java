@@ -21,7 +21,7 @@ public class Main {
         while (true) {
             dispatcher.addTask(TaskGenerator.generateRandomTask(processor, id));
             id++;
-            Thread.sleep(1000L);
+            Thread.sleep(6000L);
         }
     }
 

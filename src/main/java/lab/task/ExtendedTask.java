@@ -3,7 +3,7 @@ package lab.task;
 public class ExtendedTask extends Task {
 
     private int needTicksBeforeWait;
-    private boolean needToWait = true;
+    private boolean waitRequired = true;
     private int waitTicks;
 
     private final Processor processor;
@@ -31,12 +31,12 @@ public class ExtendedTask extends Task {
                         setRunning(false);
                     }
                 }
-                if (needToWait) {
+                if (waitRequired) {
                     needTicksBeforeWait--;
                     System.out.println("До начала ожидания задачи " + this + " " + needTicksBeforeWait + " тактов");
                     if (needTicksBeforeWait == 0) {
                         waiting();
-                        needToWait = false;
+                        waitRequired = false;
                     }
                 }
 //                if (needToWait && needTicksBeforeWait == 0) {

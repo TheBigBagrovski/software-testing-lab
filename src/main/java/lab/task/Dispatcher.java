@@ -19,8 +19,7 @@ public class Dispatcher implements Runnable {
     private Task currentTask;
     private Future<?> future;
     private final ExecutorService worker = Executors.newSingleThreadExecutor();
-    private final List<Task> completedTasks = new ArrayList<>();
-
+    private final List<Task> finishedTasks = new ArrayList<>();
     public Dispatcher(Processor processor) {
         this.processor = processor;
     }
@@ -49,12 +48,12 @@ public class Dispatcher implements Runnable {
 //                    System.out.println(taskQueue);
                     Processor.waitForTickComplete();                          // ожидаем такт
 //                    System.err.println(currentTask);
-                    Thread.sleep(30);
+                    Thread.sleep(50);
 //                    System.err.println(currentTask);
                     if (currentTask == null || currentTask.getRequiredTicks() == 0) { // если задачи нет или закончилась предыдущая
                         if (currentTask != null && currentTask.getCurrentState() == State.SUSPENDED) {                                // если обновляем задачу в связи с завершением предыдущей
 //                            currentTask.preempt();
-                            completedTasks.add(currentTask);
+                            finishedTasks.add(currentTask);
                         }
                         //
                         currentTask = taskQueue.take();                           // берем новую задачу
