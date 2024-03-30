@@ -32,7 +32,7 @@ public class Dispatcher implements Runnable {
                 future.cancel(true);                                   // прерываем текущую
                 System.out.println(currentTask + " сменяется, т. к. в очереди есть задача с приоритетом " + task.getPriority() + ". До выполнения осталось " + currentTask.getRequiredTicks() + " тактов.");
 //                        currentTask.terminate();
-//                        taskQueue.add(currentTask);                               // возвращаем прерванную в очередь
+                        taskQueue.add(currentTask);                               // возвращаем прерванную в очередь
                 currentTask = null;                                       // снимаем задачу с выполнения, сразу будет выбрана следующая из очереди, выполнение начнется на следующем такте
             }
 //        taskQueue.add(task);
